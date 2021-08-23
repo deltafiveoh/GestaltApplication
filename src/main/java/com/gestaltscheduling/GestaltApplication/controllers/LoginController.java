@@ -7,19 +7,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import java.util.HashMap;
 
 @Controller
-@RequestMapping("home")
-public class HomeController {
+@RequestMapping("")
+public class LoginController {
 
     @RequestMapping(value = "")
     public String index(Model model) {
 
-        HashMap<String, String> actionChoices = new HashMap<>();
-        actionChoices.put("calendar", "Calendar");
-        actionChoices.put("messages", "Messages");
-
-        model.addAttribute("actions", actionChoices);
-
-        return "home";
+        return "login";
     }
 
 }

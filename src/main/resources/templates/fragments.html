@@ -22,12 +22,13 @@
                 <ul class="nav navbar-nav">
                     <li><a th:href="@{/calendar}">Calendar</a></li>
                     <li><a th:href="@{/messages}">Messages</a></li>
+                    <li><a th:href="@{/tasks}">Tasks</a></li>
                 </ul>
             </div>
         </div>
     </div>
 
-    <div th:fragment="calendar-header" class="navbar navbar-inverse navbar-fixed-bottom">
+    <div th:fragment="calendar-footer" class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container">
             <div class="navbar-collapse collapse">
                 <ul class="nav calendar-nav">

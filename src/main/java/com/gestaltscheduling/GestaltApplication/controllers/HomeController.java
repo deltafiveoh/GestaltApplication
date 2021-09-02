@@ -16,6 +16,7 @@ public class HomeController {
         HashMap<String, String> actionChoices = new HashMap<>();
         actionChoices.put("calendar", "Calendar");
         actionChoices.put("messages", "Messages");
+        actionChoices.put("tasks", "Tasks");
 
         model.addAttribute("actions", actionChoices);
 

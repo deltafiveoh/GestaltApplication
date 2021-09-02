@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping("user")
 public class UserController {
 
     @GetMapping("/add")
@@ -18,7 +19,7 @@ public class UserController {
         return "user/add";
     }
 
-    @RequestMapping(value = "")
+    @RequestMapping(value = "log")
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
         model.addAttribute("user", user);
         model.addAttribute("verify", verify);

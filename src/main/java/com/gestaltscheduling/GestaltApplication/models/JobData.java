@@ -2,11 +2,7 @@ package com.gestaltscheduling.GestaltApplication.models;
 
 import java.util.ArrayList;
 
-/**
- * Created by LaunchCode
- */
 public class JobData {
-
 
     /**
      * Returns the results of searching the Jobs data by field and search term.

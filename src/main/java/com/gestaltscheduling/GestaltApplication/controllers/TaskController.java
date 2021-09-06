@@ -1,10 +1,11 @@
 package com.gestaltscheduling.GestaltApplication.controllers;
 
-import org.launchcode.javawebdevtechjobspersistent.models.Job;
-import org.launchcode.javawebdevtechjobspersistent.models.JobData;
-import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
-import org.launchcode.javawebdevtechjobspersistent.models.data.JobRepository;
-import org.launchcode.javawebdevtechjobspersistent.models.data.SkillRepository;
+import com.gestaltscheduling.GestaltApplication.models.Job;
+import com.gestaltscheduling.GestaltApplication.models.JobData;
+import com.gestaltscheduling.GestaltApplication.models.data.DateRepository;
+import com.gestaltscheduling.GestaltApplication.models.data.EmployeeRepository;
+import com.gestaltscheduling.GestaltApplication.models.data.JobRepository;
+import com.gestaltscheduling.GestaltApplication.models.data.RigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,39 +14,40 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 
-/**
- * Created by LaunchCode
- */
 @Controller
-@RequestMapping(value = "list")
-public class ListController {
+@RequestMapping(value = "tasks")
+public class TaskController {
 
-//    @Autowired
-//    private JobRepository jobRepository;
-//
-//    @Autowired
-//    private EmployerRepository employerRepository;
-//
-//    @Autowired
-//    private SkillRepository skillRepository;
+    @Autowired
+    private JobRepository jobRepository;
+
+    @Autowired
+    private EmployeeRepository employeeRepository;
+
+    @Autowired
+    private RigRepository rigRepository;
+
+    @Autowired
+    private DateRepository dateRepository;
 
     static HashMap<String, String> columnChoices = new HashMap<>();
 
-    public ListController () {
+    public TaskController() {
 
         columnChoices.put("all", "All");
-        columnChoices.put("employer", "Employer");
         columnChoices.put("job","Job");
-        columnChoices.put("skill", "Skill");
-
+        columnChoices.put("employee", "Employee");
+        columnChoices.put("rig","Rig");
+        columnChoices.put("date", "Date");
     }
 
     @RequestMapping("")
     public String list(Model model) {
         model.addAttribute("title", "List");
-        model.addAttribute("employers", employerRepository.findAll());
-        model.addAttribute("jobs", jobRepository.findAll());
-        model.addAttribute("skills", skillRepository.findAll());
+        model.addAttribute("job", jobRepository.findAll());
+        model.addAttribute("employees", employeeRepository.findAll());
+        model.addAttribute("rigs", rigRepository.findAll());
+        model.addAttribute("date", dateRepository.findAll());
         return "list";
     }
 
@@ -61,6 +63,6 @@ public class ListController {
         }
         model.addAttribute("jobs", jobs);
 
-        return "list-jobs";
+        return "tasklist";
     }
 }

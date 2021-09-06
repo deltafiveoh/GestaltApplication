@@ -1,7 +1,7 @@
 package com.gestaltscheduling.GestaltApplication.controllers;
 
-import org.launchcode.javawebdevtechjobspersistent.models.Employer;
-import org.launchcode.javawebdevtechjobspersistent.models.data.EmployerRepository;
+import com.gestaltscheduling.GestaltApplication.models.Employee;
+import com.gestaltscheduling.GestaltApplication.models.data.EmployeeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -13,42 +13,42 @@ import java.util.Optional;
 
 @Controller
 @RequestMapping("employers")
-public class EmployerController {
+public class EmployeeController {
 
-//    @Autowired
-//    private EmployerRepository employerRepository;
+    @Autowired
+    private EmployeeRepository employeeRepository;
 
     @GetMapping("")
     public String displayAllEmployerForm(Model model) {
         model.addAttribute("title", "All Employers");
-        model.addAttribute("employers", employerRepository.findAll());
+        model.addAttribute("employers", employeeRepository.findAll());
         return "employers/index";
     }
 
     @GetMapping("add")
     public String displayAddEmployerForm(Model model) {
         model.addAttribute("title", "Add Employers");
-        model.addAttribute(new Employer());
+        model.addAttribute(new Employee());
         return "employers/add";
     }
 
     @PostMapping("add")
-    public String processAddEmployerForm(@ModelAttribute @Valid Employer newEmployer,
+    public String processAddEmployerForm(@ModelAttribute @Valid Employee newEmployer,
                                     Errors errors, Model model) {
         if (errors.hasErrors()) {
             return "employers/add";
         }
-        employerRepository.save(newEmployer);
+        employeeRepository.save(newEmployer);
         return "redirect:../add";
     }
 
     @GetMapping("view/{employerId}")
     public String displayViewEmployer(Model model, @PathVariable int employerId) {
 
-        Optional optEmployer = employerRepository.findById(employerId);
+        Optional optEmployer = employeeRepository.findById(employerId);
         if (optEmployer.isPresent()) {
-            Employer employer = (Employer) optEmployer.get();
-            model.addAttribute("employer", employer);
+            Employee employee = (Employee) optEmployer.get();
+            model.addAttribute("employer", employee);
             return "employers/view";
         } else {
             return "redirect:../";

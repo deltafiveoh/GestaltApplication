@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Employer extends AbstractEntity {
+public class Employee extends AbstractEntity {
 
     @NotBlank(message = "Location is required")
     private String location;
 
     @OneToMany
     @JoinColumn
-    private List<Job> employers = new ArrayList<>();
+    private List<Job> employees = new ArrayList<>();
 
-    public Employer(String location) {
+    public Employee(String location) {
         this.location = location;
     }
 
-    public Employer() {}
+    public Employee() {}
 
     public String getLocation() { return location; }
 

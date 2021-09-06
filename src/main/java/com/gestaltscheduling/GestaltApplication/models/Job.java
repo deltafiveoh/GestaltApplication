@@ -15,20 +15,20 @@ public class Job extends AbstractEntity{
     }
 
     @ManyToOne
-    private Employer employer;
+    private Employee employee;
 
-    public Job(Employer anEmployer, List<Skill> someSkills) {
+    public Job(Employee anEmployee, List<Skill> someSkills) {
         super();
-        this.employer = anEmployer;
+        this.employee = anEmployee;
         this.skills = someSkills;
     }
 
-    public Employer getEmployer() {
-        return employer;
+    public Employee getEmployer() {
+        return employee;
     }
 
-    public void setEmployer(Employer employer) {
-        this.employer = employer;
+    public void setEmployee(Employee employer) {
+        this.employee = employer;
     }
 
     public List<Skill> getSkills() {

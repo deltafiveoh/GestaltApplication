@@ -7,13 +7,28 @@
         <div th:replace="fragments :: page-header"></div>
 
         <div class="container body-content">
-            <h2>View messages from:</h2>
-            <ul>
-                <li th:each="users : ${users}">
-                    <a th:href="@{'/' + ${users.key}}" th:text="${users.value}"></a>
-                </li>
-            </ul>
+            <h2>View Tasks:</h2>
         </div>
+
+        <table class="centeredTable">
+            <tr>
+                <th:block th:each="column : ${columns}">
+                    <th th:text = "${column.value}"></th>
+                </th:block>
+            </tr>
+            <tr>
+
+                <td> <a th:href="@{/tasks/jobs(column=all,value=all)}">All Tasks</a></td>
+
+                <td th:each="cat : ${tableChoices}">
+                    <ul>
+                        <li th:each="item : ${cat.value}">
+                            <a th:href="@{/list/jobs(column=${cat.key},value=${item})}" th:text="${item}"></a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        </table>
 
     </body>
 

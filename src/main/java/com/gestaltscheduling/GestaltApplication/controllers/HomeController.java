@@ -18,6 +18,7 @@ public class HomeController {
         actionChoices.put("messages", "Messages");
         actionChoices.put("tasks", "Tasks");
 
+
         model.addAttribute("actions", actionChoices);
 
         return "home";

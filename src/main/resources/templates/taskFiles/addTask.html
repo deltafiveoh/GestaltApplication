@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org/">
+<head th:replace="fragments :: head"></head>
+<!--<body class="container body-content">-->
+
+    <body>
+
+        <nav th:replace="fragments :: page-header"></nav>
+
+        <form method="post" style="max-width:600px; padding-top: 80px">
+            <div class="form-group">
+                <label th:for="name">Name</label>
+<!--                <input class="form-control" th:field="${job.name}" />-->
+<!--                <span th:errors="${job.name}" class="error"></span>-->
+            </div>
+
+            <div class="form-group">
+                <label th:for="employer">Tasks</label>
+<!--                <select name="employerId">-->
+<!--                    <option th:each="employer : ${employers}"-->
+<!--                            th:text="${employer.name}"-->
+<!--                            th:value="${employer.id}"></option>-->
+<!--                </select>-->
+<!--                <a th:href="@{'/tasks/add'}">Add Tasks</a>-->
+            </div>
+
+            <div class="form-group">
+                <label th:for="employer">Rigs</label>
+<!--                <select name="employerId">-->
+<!--                    <option th:each="employer : ${employers}"-->
+<!--                            th:text="${employer.name}"-->
+<!--                            th:value="${employer.id}"></option>-->
+<!--                </select>-->
+<!--                <a th:href="@{'/tasks/add'}">Add Rigs</a>-->
+            </div>
+
+            <div class="form-group">
+                <label th:for="skills">Employees</label>
+<!--                <th:block th:each="skill : ${skills}">-->
+<!--                    <input type="checkbox" name="skills" th:value="${skill.id}">-->
+<!--                    <label th:text="${skill.name}"></label>-->
+<!--                </th:block>-->
+<!--                <a th:href="@{'/skills/add'}">Add Employees</a>-->
+            </div>
+
+<!--9-->
+        </form>
+
+    </body>
+</html>

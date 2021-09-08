@@ -4,7 +4,7 @@
 
     <body>
 
-        <div th:replace="fragments :: page-header"></div>
+        <nav th:replace="fragments :: page-header"></nav>
 
         <div class="container body-content">
             <h2>View Tasks:</h2>
@@ -18,7 +18,7 @@
             </tr>
             <tr>
 
-                <td> <a th:href="@{/tasks/jobs(column=all,value=all)}">All Tasks</a></td>
+                <td><a th:href="@{/tasks/jobs(column=all,value=all)}">All Tasks</a></td>
 
                 <td th:each="cat : ${tableChoices}">
                     <ul>
@@ -29,6 +29,10 @@
                 </td>
             </tr>
         </table>
+
+        <div class="container body-content">
+            <h3><a th:href="@{/taskFiles/add}">Add Task</a></h3>
+        </div>
 
     </body>
 

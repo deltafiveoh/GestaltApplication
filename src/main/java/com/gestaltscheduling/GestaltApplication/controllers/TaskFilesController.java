@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import java.util.HashMap;
 
 @Controller
-@RequestMapping(value = "tasks")
-public class TaskController {
+@RequestMapping(value = "taskFiles")
+public class TaskFilesController {
 
     @Autowired
     private JobRepository jobRepository;
@@ -32,7 +32,7 @@ public class TaskController {
 
     static HashMap<String, String> columnChoices = new HashMap<>();
 
-    public TaskController() {
+    public TaskFilesController() {
 
         columnChoices.put("all", "All");
         columnChoices.put("job","Job");
@@ -43,31 +43,12 @@ public class TaskController {
 
     @RequestMapping("")
     public String list(Model model) {
-        model.addAttribute("title", "List");
-        model.addAttribute("job", jobRepository.findAll());
-        model.addAttribute("employees", employeeRepository.findAll());
-        model.addAttribute("rigs", rigRepository.findAll());
-        model.addAttribute("date", dateRepository.findAll());
         return "tasks";
     }
 
-    @RequestMapping(value = "addTask")
+    @RequestMapping(value = "add")
     public String displayAddTaskForm(Model model) {
-        return "addTask";
+        return "taskFiles/addTask";
     }
 
-    @RequestMapping(value = "jobs")
-    public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
-        Iterable<Job> jobs;
-        if (column.toLowerCase().equals("all")){
-            jobs = jobRepository.findAll();
-            model.addAttribute("title", "All Jobs");
-        } else {
-            jobs = JobData.findByColumnAndValue(column, value, jobRepository.findAll());
-            model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
-        }
-        model.addAttribute("jobs", jobs);
-
-        return "tasklist";
-    }
 }

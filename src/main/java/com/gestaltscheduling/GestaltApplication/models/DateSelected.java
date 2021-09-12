@@ -16,7 +16,7 @@ public class DateSelected extends AbstractEntity {
 
     @OneToMany
     @JoinColumn
-    private List<Task> employees = new ArrayList<>();
+    private List<Task> dates = new ArrayList<>();
 
     public DateSelected(Date date) {
         this.date = date;

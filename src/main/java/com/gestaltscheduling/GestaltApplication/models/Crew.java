@@ -11,22 +11,22 @@ import java.util.List;
 public class Crew extends AbstractEntity {
 
     @NotBlank
-    @Size(min = 2, max = 1000, message = "Description must be between 2 and 1000 characters.")
-    private String description;
+    @Size(min = 2, max = 1000, message = "Role must be between 2 and 1000 characters.")
+    private String occupation;
 
     @ManyToMany(mappedBy = "crewmembers")
     private List<Task> tasks = new ArrayList<>();
 
     public Crew(String description) {
-        this.description = description;
+        this.occupation = description;
     }
 
     public Crew() {}
 
-    public String getDescription() { return description; }
+    public String getOccupation() { return occupation; }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setOccupation(String occupation) {
+        this.occupation = occupation;
     }
 
     public List<Task> getTasks() {

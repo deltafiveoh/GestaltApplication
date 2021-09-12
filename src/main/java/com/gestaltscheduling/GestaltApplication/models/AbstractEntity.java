@@ -21,12 +21,12 @@ public abstract class AbstractEntity {
 
     @NotBlank(message = "Name is required")
     @Size(min = 1, max = 100, message = "Must be between 1 and 100 characters")
-    public String getName() {
+    public String getOccupation() {
         return name;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setOccupation(String occupation) {
+        this.name = occupation;
     }
 
     @Override

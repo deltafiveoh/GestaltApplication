@@ -40,7 +40,7 @@ public class TaskData {
     public static String getFieldValue(Task task, String fieldName){
         String theValue;
         if (fieldName.equals("name")){
-            theValue = task.getName();
+            theValue = task.getOccupation();
         } else if (fieldName.equals("employer")){
             theValue = task.getEmployee().toString();
         } else {
@@ -63,7 +63,7 @@ public class TaskData {
 
         for (Task task : allTasks) {
 
-            if (task.getName().toLowerCase().contains(lower_val)) {
+            if (task.getOccupation().toLowerCase().contains(lower_val)) {
                 results.add(task);
             } else if (task.getEmployee().toString().toLowerCase().contains(lower_val)) {
                 results.add(task);

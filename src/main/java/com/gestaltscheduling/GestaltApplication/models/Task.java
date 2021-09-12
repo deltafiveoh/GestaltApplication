@@ -11,8 +11,9 @@ public class Task extends AbstractEntity{
 
     @ManyToMany
     private List<Crew> crewList = new ArrayList<>();
-    public Task() {
-    }
+    public Task() { }
+
+
 
     @ManyToOne
     private Employee employee;

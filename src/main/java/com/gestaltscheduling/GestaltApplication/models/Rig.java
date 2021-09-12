@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Employee extends AbstractEntity {
+public class Rig extends AbstractEntity {
 
     @NotBlank(message = "Location is required")
     private String location;
@@ -17,11 +17,11 @@ public class Employee extends AbstractEntity {
     @JoinColumn
     private List<Task> employees = new ArrayList<>();
 
-    public Employee(String location) {
+    public Rig(String location) {
         this.location = location;
     }
 
-    public Employee() {}
+    public Rig() {}
 
     public String getLocation() { return location; }
 

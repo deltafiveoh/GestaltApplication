@@ -8,20 +8,20 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Skill extends AbstractEntity {
+public class Crew extends AbstractEntity {
 
     @NotBlank
     @Size(min = 2, max = 1000, message = "Description must be between 2 and 1000 characters.")
     private String description;
 
-    @ManyToMany(mappedBy = "skills")
+    @ManyToMany(mappedBy = "crewmembers")
     private List<Task> tasks = new ArrayList<>();
 
-    public Skill(String description) {
+    public Crew(String description) {
         this.description = description;
     }
 
-    public Skill() {}
+    public Crew() {}
 
     public String getDescription() { return description; }
 

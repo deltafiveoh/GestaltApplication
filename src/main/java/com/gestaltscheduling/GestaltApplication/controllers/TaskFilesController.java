@@ -1,16 +1,13 @@
 package com.gestaltscheduling.GestaltApplication.controllers;
 
-import com.gestaltscheduling.GestaltApplication.models.Job;
-import com.gestaltscheduling.GestaltApplication.models.JobData;
 import com.gestaltscheduling.GestaltApplication.models.data.DateRepository;
 import com.gestaltscheduling.GestaltApplication.models.data.EmployeeRepository;
-import com.gestaltscheduling.GestaltApplication.models.data.JobRepository;
+import com.gestaltscheduling.GestaltApplication.models.data.TaskRepository;
 import com.gestaltscheduling.GestaltApplication.models.data.RigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.HashMap;
 
@@ -19,7 +16,7 @@ import java.util.HashMap;
 public class TaskFilesController {
 
     @Autowired
-    private JobRepository jobRepository;
+    private TaskRepository jobRepository;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -35,7 +32,7 @@ public class TaskFilesController {
     public TaskFilesController() {
 
         columnChoices.put("all", "All");
-        columnChoices.put("job","Job");
+        columnChoices.put("task","Task");
         columnChoices.put("employee", "Employee");
         columnChoices.put("rig","Rig");
         columnChoices.put("date", "Date");

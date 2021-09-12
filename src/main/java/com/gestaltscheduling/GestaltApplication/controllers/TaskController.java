@@ -1,10 +1,10 @@
 package com.gestaltscheduling.GestaltApplication.controllers;
 
-import com.gestaltscheduling.GestaltApplication.models.Job;
-import com.gestaltscheduling.GestaltApplication.models.JobData;
+import com.gestaltscheduling.GestaltApplication.models.Task;
+import com.gestaltscheduling.GestaltApplication.models.TaskData;
 import com.gestaltscheduling.GestaltApplication.models.data.DateRepository;
 import com.gestaltscheduling.GestaltApplication.models.data.EmployeeRepository;
-import com.gestaltscheduling.GestaltApplication.models.data.JobRepository;
+import com.gestaltscheduling.GestaltApplication.models.data.TaskRepository;
 import com.gestaltscheduling.GestaltApplication.models.data.RigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,7 +19,7 @@ import java.util.HashMap;
 public class TaskController {
 
     @Autowired
-    private JobRepository jobRepository;
+    private TaskRepository taskRepository;
 
     @Autowired
     private EmployeeRepository employeeRepository;
@@ -35,7 +35,7 @@ public class TaskController {
     public TaskController() {
 
         columnChoices.put("all", "All");
-        columnChoices.put("job","Job");
+        columnChoices.put("task","Task");
         columnChoices.put("employee", "Employee");
         columnChoices.put("rig","Rig");
         columnChoices.put("date", "Date");
@@ -44,7 +44,7 @@ public class TaskController {
     @RequestMapping("")
     public String list(Model model) {
         model.addAttribute("title", "List");
-        model.addAttribute("job", jobRepository.findAll());
+        model.addAttribute("task", taskRepository.findAll());
         model.addAttribute("employees", employeeRepository.findAll());
         model.addAttribute("rigs", rigRepository.findAll());
         model.addAttribute("date", dateRepository.findAll());
@@ -57,16 +57,16 @@ public class TaskController {
     }
 
     @RequestMapping(value = "jobs")
-    public String listJobsByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
-        Iterable<Job> jobs;
+    public String listTasksByColumnAndValue(Model model, @RequestParam String column, @RequestParam String value) {
+        Iterable<Task> tasks;
         if (column.toLowerCase().equals("all")){
-            jobs = jobRepository.findAll();
+            tasks = taskRepository.findAll();
             model.addAttribute("title", "All Jobs");
         } else {
-            jobs = JobData.findByColumnAndValue(column, value, jobRepository.findAll());
+            tasks = TaskData.findByColumnAndValue(column, value, taskRepository.findAll());
             model.addAttribute("title", "Jobs with " + columnChoices.get(column) + ": " + value);
         }
-        model.addAttribute("jobs", jobs);
+        model.addAttribute("tasks", tasks);
 
         return "tasklist";
     }

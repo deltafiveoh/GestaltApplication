@@ -11,22 +11,22 @@ import java.util.List;
 public class Rig extends AbstractEntity {
 
     @NotBlank(message = "Location is required")
-    private String location;
+    private String rig;
 
-    @OneToMany
-    @JoinColumn
-    private List<Task> employees = new ArrayList<>();
+//    @OneToMany
+//    @JoinColumn
+//    private List<Task> employees = new ArrayList<>();
 
-    public Rig(String location) {
-        this.location = location;
+    public Rig(String rig) {
+        this.rig = rig;
     }
 
     public Rig() {}
 
-    public String getLocation() { return location; }
+    public String getRig() { return rig; }
 
-    public void setLocation(String location) {
-        this.location = location;
+    public void setRig(String rig) {
+        this.rig = rig;
     }
 
 }

@@ -15,17 +15,17 @@ import java.util.HashMap;
 @RequestMapping(value = "taskFiles")
 public class TaskFilesController {
 
-    @Autowired
-    private TaskRepository jobRepository;
-
-    @Autowired
-    private EmployeeRepository employeeRepository;
-
-    @Autowired
-    private RigRepository rigRepository;
-
-    @Autowired
-    private DateRepository dateRepository;
+//    @Autowired
+//    private TaskRepository jobRepository;
+//
+//    @Autowired
+//    private EmployeeRepository employeeRepository;
+//
+//    @Autowired
+//    private RigRepository rigRepository;
+//
+//    @Autowired
+//    private DateRepository dateRepository;
 
     static HashMap<String, String> columnChoices = new HashMap<>();
 

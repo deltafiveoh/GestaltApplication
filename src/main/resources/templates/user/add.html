@@ -5,6 +5,7 @@
     <link href="../static/css/login.css" th:href="@{/css/login.css}" rel="stylesheet" />
     <title>Sign Up</title>
 </head>
+
 <body>
     <form method = 'post' th:action="@{/user}">
         <label>
@@ -19,7 +20,7 @@
 
         <label>
             Password:
-            <input type = 'password' name = 'password'>
+            <input type = 'password' name = 'password' th:value="${password}">
         </label>
 
         <label>

@@ -14,8 +14,8 @@ public class Skill extends AbstractEntity {
     @Size(min = 2, max = 1000, message = "Description must be between 2 and 1000 characters.")
     private String description;
 
-    @ManyToMany(mappedBy = "skills")
-    private List<Task> tasks = new ArrayList<>();
+//    @ManyToMany(mappedBy = "skills")
+//    private List<Task> tasks = new ArrayList<>();
 
     public Skill(String description) {
         this.description = description;
@@ -29,8 +29,8 @@ public class Skill extends AbstractEntity {
         this.description = description;
     }
 
-    public List<Task> getTasks() {
-        return tasks;
-    }
+//    public List<Task> getTasks() {
+//        return tasks;
+//    }
 
 }

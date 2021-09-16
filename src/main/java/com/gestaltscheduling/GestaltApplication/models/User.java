@@ -1,12 +1,21 @@
 package com.gestaltscheduling.GestaltApplication.models;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
+
+@Entity
 public class User {
     private String username;
     private String email;
     private String password;
 
-    public User() {
+    @GeneratedValue
+    @Id
+    private int id;
 
+    public User() {
     }
 
     public User(String username, String email, String password) {
@@ -15,6 +24,9 @@ public class User {
         this.email = email;
         this.password = password;
     }
+
+//    @ManyToOne
+//    private User user;
 
     public String getUsername() {
         return username;

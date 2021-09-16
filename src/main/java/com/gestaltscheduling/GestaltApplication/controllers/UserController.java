@@ -5,21 +5,25 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-@RequestMapping("user")
+@RequestMapping("")
 public class UserController {
 
-    @GetMapping("/add")
+    @RequestMapping(value = "")
+    public String index(Model model) {
+        return "user/functionalLogin";
+    }
+
+    @GetMapping("/user/add")
     public String displayAddUserForm(Model model) {
         User user = new User();
         model.addAttribute("user", user);
         return "user/add";
     }
 
-    @RequestMapping(value = "log")
+    @RequestMapping(value = "login")
     public String processAddUserForm(Model model, @ModelAttribute User user, String verify) {
         model.addAttribute("user", user);
         model.addAttribute("verify", verify);
@@ -30,7 +34,7 @@ public class UserController {
         }
         else {
             model.addAttribute("error", "Passwords do not match");
-            return "user/add";
+            return "user/functionalLogin";
         }
 
     }

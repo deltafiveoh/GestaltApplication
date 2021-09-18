@@ -1,14 +1,21 @@
 package com.gestaltscheduling.GestaltApplication.models;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Entity
 public class User {
+
+    @NotBlank (message = "Username required")
+    @Size(min=3, max=50, message = "Username must be between 3 and 50 characters")
     private String username;
+
+    @NotBlank (message = "Username required")
     private String email;
+
+    @NotBlank (message = "Username required")
+    @Size(min=8, max=20, message = "Username must be between 8 and 20 characters")
     private String password;
 
     @GeneratedValue
@@ -25,7 +32,7 @@ public class User {
         this.password = password;
     }
 
-//    @ManyToOne
+//    @OneToOne
 //    private User user;
 
     public String getUsername() {

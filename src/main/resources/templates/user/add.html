@@ -7,30 +7,33 @@
 </head>
 
 <body>
-    <form method = 'post' th:action="@{/user}">
-        <label>
-            Username:
-            <input type = 'text' name = 'username' th:value="${username}">
-        </label>
+    <form method = 'post' style="max-width:600px">
+        <div class="form-group">
+            <label class="form-control">Username:</label>
+            <input type = 'text' name = 'username' th:field="${registerDTO.username}"/>
+            <span th:errors="${registerDTO.username}" class="error"></span>
+        </div>
 
-        <label>
-            Email:
-            <input type = 'email' name = 'email' th:value="${email}">
-        </label>
+        <div class="form-group">
+            <label class="form-control">Email:</label>
+            <input type = 'email' name = 'email' th:field="${registerDTO.email}"/>
+            <span th:errors="${registerDTO.email}" class="error"></span>
+        </div>
 
-        <label>
-            Password:
-            <input type = 'password' name = 'password' th:value="${password}">
-        </label>
+        <div class="form-group">
+            <label class="form-control">Password:</label>
+            <input type = 'password' name = 'password' th:field="${registerDTO.password}"/>
+            <span th:errors="${registerDTO.password}" class="error"></span>
+        </div>
 
-        <label>
-            Verify Password:
-            <input type = 'password' name = 'verify'>
-        </label>
+        <div class="form-group">
+            <label class="form-control">Verify Password:</label>
+            <input type = 'password' name = 'verify' th:field="${registerDTO.verifyPassword}"/>
+        </div>
 
-        <p th:text="${error}"></p>
+        <p th:text="${error}">Please fill in all fields</p>
 
-        <input type = 'submit' value = 'Sign Up'>
+        <input type='submit' value = 'Sign Up'/>
 
         <a href="${/}"><button>Return to Login</button></a>
     </form>

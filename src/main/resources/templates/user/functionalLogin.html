@@ -22,18 +22,19 @@
     <form class="modal-content animate">
 
         <div class="container">
-            <label><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="username" th:value="${username}" required>
+            <label th:for="username"><b>Username</b></label>
+            <input type="text" placeholder="Enter Username"  th:value="${loginDTO.username}" required>
+            <span class="error" th:errors="${loginDTO.username}"></span>
 
-            <label><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="password" th:value="${password}" required>
+            <label th:for="password"><b>Password</b></label>
+            <input type="password" placeholder="Enter Password" th:value="${loginDTO.password}" required>
+            <span class="error" th:errors="${loginDTO.password}"></span>
 
             <button type="submit">Login</button>
         </div>
 
         <div class="container" style="background-color:#f1f1f1">
             <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-            <span class="password">Forgot <a href="#">password?</a></span>
         </div>
 
     </form>

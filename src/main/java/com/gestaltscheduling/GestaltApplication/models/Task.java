@@ -9,35 +9,40 @@ import java.util.List;
 @Entity
 public class Task extends AbstractEntity{
 
-////    @ManyToMany
-//    private List<Crew> crewList = new ArrayList<>();
-//    public Task() { }
-//
-////    @ManyToOne
-//    private Crew employee;
-//
-//    public Task(Crew anEmployee, List<Crew> crewList) {
-//        super();
-//        this.employee = anEmployee;
-//        this.crewList = crewList;
-//    }
-//
-//    public Crew getEmployee() {
-//        return employee;
-//    }
-//
-//    public void setEmployee(Crew employer) {
-//        this.employee = employer;
-//    }
-//
-//    public List<Crew> getCrew() {
-//        return crewList;
-//    }
-//
-//    public void setCrew(List<Crew> crewList) {
-//        this.crewList = crewList;
-//    }
-//
+    @ManyToMany
+    private List<Crew> crewList = new ArrayList<>();
 
+    @ManyToOne
+    private Rig rig;
+
+    @ManyToMany
+    private DateStart start;
+
+    @ManyToMany
+    private DateEnd end;
+
+    public Task() { }
+
+    public Task(Rig aRig, List<Crew> crewList) {
+        super();
+        this.rig = aRig;
+        this.crewList = crewList;
+    }
+
+    public Rig getRig() {
+        return rig;
+    }
+
+    public void setRig(Rig rig) {
+        this.rig = rig;
+    }
+
+    public List<Crew> getCrew() {
+        return crewList;
+    }
+
+    public void setCrew(List<Crew> crewList) {
+        this.crewList = crewList;
+    }
 
 }

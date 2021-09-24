@@ -54,17 +54,17 @@ public class UserController {
     public String processLoginForm(@ModelAttribute @Valid LoginDTO loginDTO,
                                    Errors errors, HttpServletRequest request,
                                    Model model) {
-        if (errors.hasErrors()) {
-            model.addAttribute("title", "Log In");
-            return "";
-        }
+//        if (errors.hasErrors()) {
+//            model.addAttribute("title", "Log In");
+//            return "redirect:/user/add";
+//        }
 
         User theUser = userRepository.findByUsername(loginDTO.getUsername());
 
         if (theUser == null) {
             errors.rejectValue("username", "user.invalid", "The given username does not exist");
             model.addAttribute("title", "Log In");
-            return "";
+            return "user/functionalLogin";
         }
 
         String password = loginDTO.getPassword();
@@ -72,9 +72,9 @@ public class UserController {
         if (!theUser.isMatchingPassword(password)) {
             errors.rejectValue("password", "password.invalid", "Invalid password");
             model.addAttribute("title", "Log In");
-            return "";
+            return "user/functionalLogin";
         }
-
+        System.out.println(theUser.isMatchingPassword(password));
         setUserInSession(request.getSession(), theUser);
 
         return "redirect:/home";
@@ -119,5 +119,10 @@ public class UserController {
         return "redirect:../";
     }
 
+    @GetMapping("/logout")
+    public String logout(HttpServletRequest request){
+        request.getSession().invalidate();
+        return "redirect:../";
+    }
 
 }

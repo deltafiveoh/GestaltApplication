@@ -11,19 +11,16 @@
         <div class="form-group">
             <label class="form-control">Username:</label>
             <input type = 'text' name = 'username' th:field="${registerDTO.username}"/>
-            <span th:errors="${registerDTO.username}" class="error"></span>
         </div>
 
         <div class="form-group">
             <label class="form-control">Email:</label>
             <input type = 'email' name = 'email' th:field="${registerDTO.email}"/>
-            <span th:errors="${registerDTO.email}" class="error"></span>
         </div>
 
         <div class="form-group">
             <label class="form-control">Password:</label>
             <input type = 'password' name = 'password' th:field="${registerDTO.password}"/>
-            <span th:errors="${registerDTO.password}" class="error"></span>
         </div>
 
         <div class="form-group">

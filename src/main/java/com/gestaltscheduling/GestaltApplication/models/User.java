@@ -62,14 +62,6 @@ public class User {
         this.email = email;
     }
 
-//    public String getPassword() {
-//        return password;
-//    }
-//
-//    public void setPassword(String password) {
-//        this.password = password;
-//    }
-
     public boolean isMatchingPassword(String password) {
         return encoder.matches(password, passwordHash);
     }

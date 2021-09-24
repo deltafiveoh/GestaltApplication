@@ -13,9 +13,9 @@ public class Employee extends AbstractEntity {
     @NotBlank(message = "Location is required")
     private String location;
 
-//    @OneToMany
-//    @JoinColumn
-//    private List<Task> employees = new ArrayList<>();
+    @OneToMany
+    @JoinColumn
+    private List<Task> employees = new ArrayList<>();
 
     public Employee(String location) {
         this.location = location;

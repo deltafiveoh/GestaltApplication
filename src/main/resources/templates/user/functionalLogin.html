@@ -19,18 +19,17 @@
   <span onclick="document.getElementById('id01').style.display='none'"
         class="close" title="Close Modal">&times;</span>
 
-    <form class="modal-content animate">
+    <form method = 'post' class="modal-content animate">
 
         <div class="container">
             <label th:for="username"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username"  th:value="${loginDTO.username}" required>
-            <span class="error" th:errors="${loginDTO.username}"></span>
+            <input type="text" placeholder="Enter Username" name="username" th:field="${loginDTO.username}" required>
 
             <label th:for="password"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" th:value="${loginDTO.password}" required>
-            <span class="error" th:errors="${loginDTO.password}"></span>
+            <input type="password" placeholder="Enter Password" name="password" th:field="${loginDTO.password}" required>
 
             <button type="submit">Login</button>
+<!--            <input type="submit" value="Login"/>-->
         </div>
 
         <div class="container" style="background-color:#f1f1f1">

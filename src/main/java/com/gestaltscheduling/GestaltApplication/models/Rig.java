@@ -13,9 +13,9 @@ public class Rig extends AbstractEntity {
     @NotBlank(message = "Location is required")
     private String rig;
 
-//    @OneToMany
-//    @JoinColumn
-//    private List<Task> employees = new ArrayList<>();
+    @OneToMany
+    @JoinColumn
+    private List<Task> rigs = new ArrayList<>();
 
     public Rig(String rig) {
         this.rig = rig;

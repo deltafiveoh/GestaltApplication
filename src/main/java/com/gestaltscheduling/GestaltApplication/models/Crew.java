@@ -1,6 +1,7 @@
 package com.gestaltscheduling.GestaltApplication.models;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
@@ -14,7 +15,8 @@ public class Crew extends AbstractEntity {
     @Size(min = 2, max = 1000, message = "Role must be between 2 and 1000 characters.")
     private String occupation;
 
-    @ManyToMany(mappedBy = "crewmembers")
+    @ManyToMany(mappedBy = "crewList")
+    @JoinColumn
     private List<Task> tasks = new ArrayList<>();
 
     public Crew(String description) {
@@ -28,9 +30,5 @@ public class Crew extends AbstractEntity {
     public void setOccupation(String occupation) {
         this.occupation = occupation;
     }
-
-//    public List<Task> getTasks() {
-//        return tasks;
-//    }
 
 }

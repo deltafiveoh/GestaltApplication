@@ -2,10 +2,7 @@ package com.gestaltscheduling.GestaltApplication.models;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.Date;
@@ -13,7 +10,7 @@ import java.util.List;
 import java.util.Objects;
 
 @Entity
-public class DateStart {
+public class DatesSelected {
 
     @GeneratedValue
     @Id
@@ -23,18 +20,24 @@ public class DateStart {
     @DateTimeFormat(pattern = "mm/dd/year")
     private Date dateStart;
 
-    @ManyToMany(mappedBy = "dateStarts")
-    private List<Task> dateStarts = new ArrayList<>();
+    @NotBlank(message = "Please enter a date in mm/dd/year format")
+    @DateTimeFormat(pattern = "mm/dd/year")
+    private Date dateEnd;
+
+    @ManyToMany(mappedBy = "datesSelected")
+    @JoinColumn
+    private List<Task> dates = new ArrayList<>();
 
     public int getId() {
         return id;
     }
 
-    public DateStart(Date date) {
-        this.dateStart = date;
+    public DatesSelected(Date dateStart, Date dateEnd) {
+        this.dateStart = dateStart;
+        this.dateEnd = dateEnd;
     }
 
-    public DateStart() {}
+    public DatesSelected() {}
 
     public Date getDateStart() { return dateStart; }
 
@@ -42,11 +45,17 @@ public class DateStart {
         this.dateStart = start;
     }
 
+    public Date getDateEnd() { return dateEnd; }
+
+    public void setDateEnd(Date end) {
+        this.dateEnd = end;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        DateStart that = (DateStart) o;
+        DatesSelected that = (DatesSelected) o;
         return id == that.id;
     }
 

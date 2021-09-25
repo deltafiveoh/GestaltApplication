@@ -1,8 +1,6 @@
 package com.gestaltscheduling.GestaltApplication.models;
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,10 +8,10 @@ import java.util.List;
 @Entity
 public class Rig extends AbstractEntity {
 
-    @NotBlank(message = "Location is required")
+    @NotBlank(message = "Rig description is required")
     private String rig;
 
-    @OneToMany
+    @ManyToOne
     @JoinColumn
     private List<Task> rigs = new ArrayList<>();
 

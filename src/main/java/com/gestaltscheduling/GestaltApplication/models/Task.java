@@ -2,31 +2,37 @@ package com.gestaltscheduling.GestaltApplication.models;
 
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
 public class Task extends AbstractEntity{
 
+    @NotBlank
+    @NotNull
+    @Size(min = 2, max = 2000, message="Task description must be between 2 and 2000 characters")
+    private String description;
+
     @ManyToMany
     private List<Crew> crewList = new ArrayList<>();
 
-    @ManyToOne
+    @OneToMany
     private Rig rig;
 
     @ManyToMany
-    private DateStart start;
-
-    @ManyToMany
-    private DateEnd end;
+    private DatesSelected datesSelected;
 
     public Task() { }
 
-    public Task(Rig aRig, List<Crew> crewList) {
+    public Task(Rig aRig, List<Crew> crewList, DatesSelected dateStart) {
         super();
         this.rig = aRig;
         this.crewList = crewList;
+        this.datesSelected = dateStart;
     }
 
     public Rig getRig() {
@@ -44,5 +50,11 @@ public class Task extends AbstractEntity{
     public void setCrew(List<Crew> crewList) {
         this.crewList = crewList;
     }
+
+    public DatesSelected getDates() {
+        return datesSelected;
+    }
+
+    public void setDates(DatesSelected dateStart) {this.datesSelected = dateStart;}
 
 }

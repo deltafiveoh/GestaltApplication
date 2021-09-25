@@ -7,18 +7,28 @@
         <nav th:replace="fragments :: page-header"></nav>
 
         <div class="container body-content">
-            <h2>View Tasks:</h2>
+<!--            <h1 th:text="${#strings.capitalizeWords(title)}"></h1>-->
+            <h2 class = "centered">View Tasks By Category</h2>
         </div>
 
         <table class="centeredTable">
-            <tr>
-                <th:block th:each="column : ${columns}">
-                    <th th:text = "${column.value}"></th>
-                </th:block>
-            </tr>
-            <tr>
 
-                <td><a th:href="@{/tasks/jobs(column=all,value=all)}">All Tasks</a></td>
+            <tr>
+                <th>All</th>
+                <th>Task Name</th>
+                <th>Rig</th>
+                <th>Crew Member</th>
+                <th>Date Start</th>
+            </tr>
+
+<!--            <tr>-->
+<!--                <th:block th:each="column : ${columns}">-->
+<!--                    <th th:text = "${column.value}"></th>-->
+<!--                </th:block>-->
+<!--            </tr>-->
+
+            <tr>
+                <td><a th:href="@{/tasks/taskFiles(column=all,value='View All')}">All Tasks</a></td>
 
                 <td th:each="cat : ${tableChoices}">
                     <ul>

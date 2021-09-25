@@ -1,8 +1,7 @@
 //package com.gestaltscheduling.GestaltApplication.controllers;
 //
 //import com.gestaltscheduling.GestaltApplication.models.Crew;
-//import com.gestaltscheduling.GestaltApplication.models.Employee;
-//import com.gestaltscheduling.GestaltApplication.models.data.EmployeeRepository;
+//import com.gestaltscheduling.GestaltApplication.models.data.TaskRepository;
 //import org.springframework.beans.factory.annotation.Autowired;
 //import org.springframework.stereotype.Controller;
 //import org.springframework.ui.Model;
@@ -13,24 +12,24 @@
 //import java.util.Optional;
 //
 //@Controller
-//@RequestMapping("employees")
-//public class EmployeeController {
+//@RequestMapping("taskFiles")
+//public class CrewController {
 //
 //    @Autowired
-//    private EmployeeRepository employeeRepository;
+//    private TaskRepository taskRepository;
 //
 //    @GetMapping("")
-//    public String displayAllEmployeeForm(Model model) {
-//        model.addAttribute("title", "All Employees");
-//        model.addAttribute("employees", employeeRepository.findAll());
+//    public String displayAllTasksForm(Model model) {
+//        model.addAttribute("title", "All Tasks");
+//        model.addAttribute("tasks", taskRepository.findAll());
 //        return "employees/index";
 //    }
 //
-//    @GetMapping("add")
+//    @GetMapping("/addTask")
 //    public String displayAddEmployeeForm(Model model) {
 //        model.addAttribute("title", "Add Employees");
 //        model.addAttribute(new Employee());
-//        return "employees/add";
+//        return "addTask";
 //    }
 //
 //    @PostMapping("add")
@@ -39,7 +38,7 @@
 //        if (errors.hasErrors()) {
 //            return "employees/add";
 //        }
-//        employeeRepository.save(newEmployee);
+//        taskRepository.save(newEmployee);
 //        return "redirect:../add";
 //    }
 //

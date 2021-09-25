@@ -11,7 +11,7 @@ public class Rig extends AbstractEntity {
     @NotBlank(message = "Rig description is required")
     private String rig;
 
-    @ManyToOne
+    @ManyToMany(mappedBy = "rig")
     @JoinColumn
     private List<Task> rigs = new ArrayList<>();
 

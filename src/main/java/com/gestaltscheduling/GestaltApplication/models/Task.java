@@ -7,6 +7,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Entity
@@ -20,26 +21,26 @@ public class Task extends AbstractEntity{
     @ManyToMany
     private List<Crew> crewList = new ArrayList<>();
 
-    @OneToMany
-    private Rig rig;
+    @ManyToMany
+    private List<Rig> rig = new ArrayList<>();
 
     @ManyToMany
     private DatesSelected datesSelected;
 
     public Task() { }
 
-    public Task(Rig aRig, List<Crew> crewList, DatesSelected dateStart) {
+    public Task(List<Rig> Rigs, List<Crew> crewList, DatesSelected dateStart) {
         super();
-        this.rig = aRig;
+        this.rig = Rigs;
         this.crewList = crewList;
         this.datesSelected = dateStart;
     }
 
-    public Rig getRig() {
+    public List<Rig> getRig() {
         return rig;
     }
 
-    public void setRig(Rig rig) {
+    public void setRig(List<Rig> rig) {
         this.rig = rig;
     }
 
@@ -55,6 +56,6 @@ public class Task extends AbstractEntity{
         return datesSelected;
     }
 
-    public void setDates(DatesSelected dateStart) {this.datesSelected = dateStart;}
+    public void setDates(DatesSelected datesSelected) { this.datesSelected = datesSelected; }
 
 }

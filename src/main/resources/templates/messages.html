@@ -7,12 +7,12 @@
         <div th:replace="fragments :: page-header"></div>
 
         <div class="container body-content">
-            <h2>View messages from:</h2>
-            <ul>
-                <li th:each="users : ${users}">
-                    <a th:href="@{'/' + ${users.key}}" th:text="${users.value}"></a>
-                </li>
-            </ul>
+            <h2>Message Board:</h2>
+<!--            <ul>-->
+<!--                <li th:each="users : ${users}">-->
+<!--                    <a th:href="@{'/' + ${users.key}}" th:text="${users.value}"></a>-->
+<!--                </li>-->
+<!--            </ul>-->
         </div>
 
     </body>

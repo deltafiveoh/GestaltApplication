@@ -3,17 +3,17 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container  body-content">
-<h1 th:text="${'Skill: ' + skill.name}">Default Title</h1>
+<h1 th:text="${'Crew Member: ' + crew.name}">Crew</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="job-listing">
-    <p th:text="${'Name: ' + skill.name}"></p>
-    <p th:text="${'Description: ' + skill.description}"></p>
-    <p> Jobs:
+    <p th:text="${'Name: ' + crew.name}"></p>
+    <p th:text="${'Occupation: ' + crew.occupation}"></p>
+    <p> Tasks:
         <ul>
-            <li th:each="job : ${skill.jobs}">
-                <a th:href="@{'/view/' + ${job.id}}" th:text="${job.name}"></a>
+            <li th:each="task : ${crew.tasks}">
+                <a th:href="@{'/view/' + ${task.id}}" th:text="${task.name}"></a>
             </li>
         </ul>
     </p>

@@ -23,6 +23,7 @@
                     <li><a th:href="@{/calendar}">Calendar</a></li>
                     <li><a th:href="@{/messages}">Messages</a></li>
                     <li><a th:href="@{/tasks}">Tasks</a></li>
+                    <li><a th:href="@{/}">Log Out</a></li>
                 </ul>
             </div>
         </div>
@@ -30,10 +31,10 @@
 
     <div th:fragment="calendar-footer" class="navbar navbar-inverse navbar-fixed-bottom">
         <div class="container">
-            <div class="navbar-collapse collapse">
+            <div class="navbar-collapse collapse" style="display: inline">
                 <ul class="nav calendar-nav">
-                    <li>Add</li>
-                    <li>Delete</li>
+                    <li><a th:href="@{/taskFiles/addTask}">Add Task</a></li>
+                    <li>Delete Task</li>
                     <li>Filter</li>
                 </ul>
             </div>

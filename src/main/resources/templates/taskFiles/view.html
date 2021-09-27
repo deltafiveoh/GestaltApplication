@@ -3,13 +3,36 @@
 <head th:replace="fragments :: head"></head>
 
 <body class="container  body-content">
-<h1 th:text="${'Employer: ' + employer.name}">Default Title</h1>
+<h1 th:text="${'Task: ' + task.name}">Task Details</h1>
 
 <nav th:replace="fragments :: page-header"></nav>
 
 <div class="job-listing">
-    <p th:text="${'Name: ' + employer.name}"></p>
-    <p th:text="${'Location: ' + employer.location}"></p>
+    <tr th:for="task">
+        <td>
+            <p th:text="${'Task ID: ' + task.id}"></p>
+            <p th:text="${'Name: ' + task.name}"></p>
+            <p th:text="${'Description: ' + task.description}"></p>
+            <p>
+                Rig:
+            <ul th:each="rig : ${task.rigs}" style="display: inline-block">
+                <li>
+                    <a th:href="@{'/rig/view/' + ${rig.id}}" th:text="${rig.name}"></a>
+                </li>
+            </ul>
+            </p>
+            <p>
+                Crew:
+            <ul th:each="crewMember : ${task.crew}" style="display: inline-block">
+                <li>
+                    <a th:href="@{'/crew/view/' + ${crewMember.id}}" th:text="${crewMember.name}"></a>
+                </li>
+            </ul>
+            </p>
+            <p th:text="${'Start Date: ' + task.dateStart}"></p>
+            <p th:text="${'Planned End Date: ' + task.dateEnd}"></p>
+        </td>
+    </tr>
 </div>
 
 

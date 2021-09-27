@@ -7,37 +7,6 @@
 <body>
 <div th:replace="fragments :: page-header"></div>
 
-<!--<div class="ui container">-->
-<!--    <div class="ui menu">-->
-<!--        <div class="header item">Brand</div>-->
-<!--        <a class="active item">Link</a>-->
-<!--        <a class="item">Link</a>-->
-<!--        <div class="ui dropdown item">-->
-<!--            Dropdown-->
-<!--            <i class="dropdown icon"></i>-->
-<!--            <div class="menu">-->
-<!--                <div class="item">Action</div>-->
-<!--                <div class="item">Another Action</div>-->
-<!--                <div class="item">Something else here</div>-->
-<!--                <div class="divider"></div>-->
-<!--                <div class="item">Separated Link</div>-->
-<!--                <div class="divider"></div>-->
-<!--                <div class="item">One more separated link</div>-->
-<!--            </div>-->
-<!--        </div>-->
-<!--        <div class="right menu">-->
-<!--            <div class="item">-->
-<!--                <div class="ui action left icon input">-->
-<!--                    <i class="search icon"></i>-->
-<!--                    <input type="text" placeholder="Search">-->
-<!--                    <button class="ui button">Submit</button>-->
-<!--                </div>-->
-<!--            </div>-->
-<!--            <a class="item">Link</a>-->
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->
-
 <table style="margin-top:50px">
     <tr>
         <th class="day-name">Sun</th>
@@ -52,31 +21,77 @@
     <tr>
         <td class="day number" th:each="date1 : ${week1dates}" >
             <span class="number" th:text ="${date1.value}"></span>
-            <span class="event"></span>
+            <span>
+               <ul>
+                    <li th:if = "${task.setDateToIntegerOfYear(task.dateStart) <= dayTodayValid and task.setDateToIntegerOfYear(task.dateEnd) >= dayTodayValid}" th:each="task : ${tasks}">
+                        <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
+                    </li>
+                </ul>
+            </span>
         </td>
     </tr>
+
     <tr>
         <td class="day" th:each="date2 : ${week2dates}">
             <span class="number" th:text ="${date2.value}"></span>
+            <span>
+               <ul>
+                    <li th:if = "${task.setDateToIntegerOfMonth(task.dateStart) <= date2.value
+                    and task.setDateToIntegerOfMonth(task.dateEnd) >= date2.value
+                    and task.setDateToIntegerOfYear(task.dateStart) >= dayTodayValid and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
+                        <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
+                    </li>
+                </ul>
+            </span>
         </td>
     </tr>
+
     <tr>
         <td class="day" th:each="date3 : ${week3dates}">
             <span class="number" th:text ="${date3.value}"></span>
+            <span>
+               <ul>
+                    <li th:if = "${task.setDateToIntegerOfMonth(task.dateStart) <= date3.value
+                    and task.setDateToIntegerOfMonth(task.dateEnd) >= date3.value
+                    and task.setDateToIntegerOfYear(task.dateStart) >= dayTodayValid and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
+                        <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
+                    </li>
+                </ul>
+            </span>
         </td>
     </tr>
+
     <tr>
         <td class="day" th:each="date4 : ${week4dates}">
             <span class="number" th:text ="${date4.value}"></span>
-            <span class="event"></span>
+            <span>
+               <ul>
+                    <li th:if = "${task.setDateToIntegerOfMonth(task.dateStart) <= date4.value
+                    and task.setDateToIntegerOfMonth(task.dateEnd) >= date4.value
+                    and task.setDateToIntegerOfYear(task.dateStart) >= dayTodayValid and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
+                        <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
+                    </li>
+                </ul>
+            </span>
         </td>
     </tr>
+
     <tr>
         <td class="day" th:each="date5 : ${week5dates}">
             <span class="number" th:text ="${date5.value}"></span>
+            <span>
+               <ul>
+                    <li th:if = "${task.setDateToIntegerOfMonth(task.dateStart) <= date5.value
+                    and task.setDateToIntegerOfMonth(task.dateEnd) >= date5.value
+                    and task.setDateToIntegerOfYear(task.dateStart) >= dayTodayValid and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
+                        <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
+                    </li>
+                </ul>
+            </span>
         </td>
     </tr>
-    <tr>
+
+<!--    <tr>
         <td class="day"><span class="number">31</span></td>
         <td class="day"><span class="number">1</span><span class="event"></span><span class="event"></span></td>
         <td class="day"><span class="number">2</span></td>
@@ -84,7 +99,7 @@
         <td class="day"><span class="number">4</span><span class="event event-multiday"></span><span class="event event-multiday-start eventclass" style="background-color:#5a9ab2;"></span><span class="event"></span></td>
         <td class="day"><span class="number">5</span><span class="event event-multiday-finish"></span><span class="event event-multiday eventclass" style="background-color:#5a9ab2;"></span></td>
         <td class="day"><span class="number">6</span><span class="event event-ghost"></span><span class="event event-multiday-finish eventclass" style="background-color:#5a9ab2;"></span></td>
-    </tr>
+    </tr>-->
 </table>
 
 <div th:replace="fragments :: calendar-footer"></div>

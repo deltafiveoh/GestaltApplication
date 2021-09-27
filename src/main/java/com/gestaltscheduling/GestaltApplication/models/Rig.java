@@ -9,22 +9,26 @@ import java.util.List;
 public class Rig extends AbstractEntity {
 
     @NotBlank(message = "Rig description is required")
-    private String rig;
+    private String description;
 
     @ManyToMany(mappedBy = "rig")
-    @JoinColumn
-    private List<Task> rigs = new ArrayList<>();
+//    @JoinColumn
+    private List<Task> tasks = new ArrayList<>();
 
     public Rig(String rig) {
-        this.rig = rig;
+        this.description = rig;
     }
 
     public Rig() {}
 
-    public String getRig() { return rig; }
+    public String getDescription() { return description; }
 
-    public void setRig(String rig) {
-        this.rig = rig;
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
     }
 
 }

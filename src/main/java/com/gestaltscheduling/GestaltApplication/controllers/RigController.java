@@ -44,7 +44,7 @@ public class RigController {
             model.addAttribute("rig", rig);
             return "rig/view";
         } else {
-            return "redirect:../";
+            return "redirect:../taskFiles/addTask";
         }
     }
 }

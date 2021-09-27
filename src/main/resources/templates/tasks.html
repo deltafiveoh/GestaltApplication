@@ -18,26 +18,38 @@
                 <th>Task Name</th>
                 <th>Rig</th>
                 <th>Crew Member</th>
-                <th>Date Start</th>
             </tr>
 
-<!--            <tr>-->
-<!--                <th:block th:each="column : ${columns}">-->
-<!--                    <th th:text = "${column.value}"></th>-->
-<!--                </th:block>-->
-<!--            </tr>-->
 
             <tr>
-                <td><a th:href="@{/tasks/taskFiles(column=all,value='View All')}">All Tasks</a></td>
+                <td>
+                    <li>
+                        <a th:href="@{/tasks/tasklist(column=all,value='View All')}">All Tasks</a>
+                    </li>
+                </td>
 
-                <td th:each="cat : ${tableChoices}">
+                <td>
                     <ul>
-                        <li th:each="item : ${cat.value}">
-                            <a th:href="@{/list/jobs(column=${cat.key},value=${item})}" th:text="${item}"></a>
+                        <li th:each="task : ${tasks}">
+                            <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
                         </li>
                     </ul>
                 </td>
+
+                <td>
+                    <li th:each="rig : ${rigs}">
+                        <a th:href="@{/tasks/tasklist(column=rig,value=${rig.name})}" th:text="${rig.name}"></a>
+                    </li>
+                </td>
+
+                <td>
+                    <li th:each="crew : ${crews}">
+                        <a th:href="@{/tasks/tasklist(column=crew,value=${crew.name})}" th:text="${crew.name}"></a>
+                    </li>
+                </td>
+
             </tr>
+
         </table>
 
         <div class="container body-content">

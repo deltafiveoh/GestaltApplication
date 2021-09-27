@@ -12,11 +12,11 @@ public class MessagesController {
     @RequestMapping(value = "")
     public String messages(Model model) {
 
-        HashMap<String, String> userChoices = new HashMap<>();
-        userChoices.put("user1", "User 1");
-        userChoices.put("user2", "User 2");
-
-        model.addAttribute("users", userChoices);
+//        HashMap<String, String> userChoices = new HashMap<>();
+//        userChoices.put("user1", "User 1");
+//        userChoices.put("user2", "User 2");
+//
+//        model.addAttribute("users", userChoices);
 
         return "messages";
     }

@@ -1,13 +1,7 @@
 package com.gestaltscheduling.GestaltApplication.controllers;
 
-import com.gestaltscheduling.GestaltApplication.models.Crew;
-import com.gestaltscheduling.GestaltApplication.models.DatesSelected;
-import com.gestaltscheduling.GestaltApplication.models.Rig;
-import com.gestaltscheduling.GestaltApplication.models.Task;
-import com.gestaltscheduling.GestaltApplication.models.data.CrewRepository;
-import com.gestaltscheduling.GestaltApplication.models.data.DatesSelectedRepository;
-import com.gestaltscheduling.GestaltApplication.models.data.RigRepository;
-import com.gestaltscheduling.GestaltApplication.models.data.TaskRepository;
+import com.gestaltscheduling.GestaltApplication.models.*;
+import com.gestaltscheduling.GestaltApplication.models.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +9,7 @@ import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.text.ParseException;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -33,16 +28,13 @@ public class TaskFilesController<DateRepository> {
     @Autowired
     private RigRepository rigRepository;
 
-    @Autowired
-    private DatesSelectedRepository dateRepository;
-
     static HashMap<String, String> columnChoices = new HashMap<>();
 
     public TaskFilesController() {
 
         columnChoices.put("all", "All");
         columnChoices.put("task","Task");
-        columnChoices.put("employee", "Employee");
+        columnChoices.put("crew", "Crew");
         columnChoices.put("rig","Rig");
         columnChoices.put("date", "Date");
 
@@ -53,29 +45,25 @@ public class TaskFilesController<DateRepository> {
         model.addAttribute("title", "Add Task");
         model.addAttribute("crew", crewRepository.findAll());
         model.addAttribute("rigs", rigRepository.findAll());
-        model.addAttribute("dates", dateRepository.findAll());
         model.addAttribute(new Task());
-        return "addTask";
+        return "taskFiles/addTask";
     }
 
     @PostMapping("addTask")
     public String processAddTaskForm(@ModelAttribute @Valid Task newTask,
                                      Errors errors, Model model, @RequestParam List<Integer> rigs,
-                                     @RequestParam List<Integer> crew, @RequestParam Date dateStart, @RequestParam Date dateEnd) {
+                                     @RequestParam List<Integer> crew) {
         if (errors.hasErrors()) {
             model.addAttribute("title", "Add Task");
-            return "addTask";
+            return "taskFiles/addTask";
         }
         List<Rig> rigsObj = (List<Rig>) rigRepository.findAllById(rigs);
-        newTask.setRig(rigsObj);
+        newTask.setRigs(rigsObj);
         List<Crew> crewObj = (List<Crew>) crewRepository.findAllById(crew);
         newTask.setCrew(crewObj);
-        DatesSelected selectedDates = new DatesSelected(dateStart, dateEnd);
-        newTask.setDates(selectedDates);
         taskRepository.save(newTask);
         return "redirect:/tasks";
     }
-
 
     @GetMapping("view/{taskId}")
     public String displayViewTask(Model model, @PathVariable int taskId) {
@@ -84,9 +72,9 @@ public class TaskFilesController<DateRepository> {
         if (optTask.isPresent()) {
             Task task = (Task) optTask.get();
             model.addAttribute("task", task);
-            return "view";
+            return "/taskFiles/view";
         }else {
-            return "redirect:/home" ;
+            return "redirect:/tasks" ;
         }
     }
 }

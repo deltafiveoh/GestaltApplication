@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org/">
 <head th:replace="fragments :: head">
+    <link th:href="@{/css/website.css}" rel="stylesheet" />
 </head>
 <body>
 
@@ -10,32 +11,37 @@
 
     <h1 th:text="${#strings.capitalizeWords(title)}"></h1>
 
-    <h2>Test Text</h2>
-
-    <table class="job-listing" th:each="job : ${jobs}">
-        <tr>
-            <td>ID</td>
-            <td th:text="${job.getId()}"></td>
-        </tr>
-        <tr>
-            <td>Name</td>
-            <td th:text="${job.getName()}"></td>
-        </tr>
-        <tr>
-            <td>Employer</td>
-            <td><a th:href="@{/list/jobs(column=employer,value=${job.getEmployee()})}" th:text="${job.getEmployee()}"></a></td>
-        </tr>
-        <tr>
-            <td>Location</td>
-            <td><a th:href="@{/list/jobs(column=location,value=${job.getLocation()})}" th:text="${job.getLocation()}"></a></td>
-        </tr>
-        <tr>
-            <td>Position Type</td>
-            <td><a th:href="@{/list/jobs(column=positionType,value=${job.getPositionType()})}" th:text="${job.getPositionType()}"></a></td>
-        </tr>
-        <tr>
-            <td>Skill</td>
-            <td> <a th:href="@{/list/jobs(column=coreCompetency,value=${job.getCoreCompetency()})}" th:text="${job.getCoreCompetency()}"></a></td>
+    <table class="job-listing">
+        <tr th:each="task : ${tasks}">
+            <td>
+                <p>
+                    Task Id:
+                    <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.id}"></a>
+                </p>
+                <p>
+                    Name:
+                    <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
+                </p>
+                <p th:text="${'Description: ' + task.description}"></p>
+                <p>
+                    Rig:
+                <ul th:each="rig : ${task.rigs}" style="display: inline-block">
+                    <li>
+                        <a th:href="@{'/rig/view/' + ${rig.id}}" th:text="${rig.name}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p>
+                    Crew:
+                <ul th:each="crewMember : ${task.crew}" style="display: inline-block">
+                    <li>
+                        <a th:href="@{'/crew/view/' + ${crewMember.id}}" th:text="${crewMember.name}"></a>
+                    </li>
+                </ul>
+                </p>
+                <p th:text="${'Start Date: ' + task.dateStart}"></p>
+                <p th:text="${'Planned End Date: ' + task.dateEnd}"></p>
+            </td>
         </tr>
     </table>
 

@@ -1,9 +1,7 @@
 package com.gestaltscheduling.GestaltApplication.controllers;
 
 import com.gestaltscheduling.GestaltApplication.models.Crew;
-import com.gestaltscheduling.GestaltApplication.models.Rig;
 import com.gestaltscheduling.GestaltApplication.models.data.CrewRepository;
-import com.gestaltscheduling.GestaltApplication.models.data.RigRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -46,7 +44,7 @@ public class CrewController {
             model.addAttribute("crew", crew);
             return "crew/view";
         } else {
-            return "redirect:../";
+            return "redirect:../taskFiles/addTask";
         }
     }
 }

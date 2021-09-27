@@ -9,39 +9,50 @@
         <form method="post" style="max-width:600px; padding-top: 80px">
             <div class="form-group">
                 <label th:for="name">Name</label>
-                <input class="form-control" th:field="${task.name}"/>
+                <input class="form-control" th:name="name" th:field="${task.name}"/>
                 <span th:errors="${task.name}" class="error"></span>
             </div>
 
             <div class="form-group">
-                <label th:for="rig">Rigs</label>
-                <select name="rigId">
-                    <option th:each="rig : ${rigs}"
-                            th:text="${rig.name}"
-                            th:value="${rig.id}"></option>
-                </select>
+                <label th:for="descrip">Task Description</label>
+                <input class="form-control" th:name="descrip" type="text" th:field="${task.description}"/>
+                <span th:errors="${task.description}" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label th:for="rigs">Rigs</label>
+<!--                <select name="rigId">-->
+<!--                    <option th:each="rig : ${rigs}"-->
+<!--                            th:text="${rig.name}"-->
+<!--                            th:value="${rig.id}"></option>-->
+<!--                </select>-->
+                <th:block th:each="rig : ${rigs}">
+                    <input type="checkbox" th:name="rigs" th:value="${rig.id}">
+                    <label th:text="${rig.name}"></label>
+                </th:block>
                 <a th:href="@{'/rig/add'}">Add Rig</a>
             </div>
 
             <div class="form-group">
                 <label th:for="crew">Crew</label>
-                <th:block th:each="crew : ${crewList}">
-                    <input type="checkbox" name="crew" th:value="${crew.id}">
-                    <label th:text="${crew.name}"></label>
+                <th:block th:each="crewMember : ${crew}">
+                    <input type="checkbox" th:name="crew" th:value="${crewMember.id}">
+                    <label th:text="${crewMember.name}"></label>
                 </th:block>
                 <a th:href="@{'/crew/add'}">Add Crew Member</a>
             </div>
 
             <div class="form-group">
-                <label class="form-control">Start Date:</label>
-                <input type = 'date' name = 'dateStart' th:field="${date.dateStart}"/>
+                <label th:for="dateStartReq" class="form-control">Start Date:</label>
+                <input type="text" th:name = "dateStartReq" th:field="${task.dateStart}"/>
             </div>
 
-            <div class="form-group">
-                <label class="form-control">End Date:</label>
-                <input type = 'date' name = 'dateEnd' th:field="${date.dateEnd}"/>
+            <div>
+                <label th:for="dateEndReq" class="form-control">End Date:</label>
+                <input type="text" th:name = "dateEndReq" th:field="${task.dateEnd}"/>
             </div>
 
+            <input type="submit" value="Add Task" />
         </form>
 
     </body>

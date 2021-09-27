@@ -16,7 +16,6 @@ public class Crew extends AbstractEntity {
     private String occupation;
 
     @ManyToMany(mappedBy = "crewList")
-    @JoinColumn
     private List<Task> tasks = new ArrayList<>();
 
     public Crew(String description) {
@@ -29,6 +28,10 @@ public class Crew extends AbstractEntity {
 
     public void setOccupation(String occupation) {
         this.occupation = occupation;
+    }
+
+    public List<Task> getTasks() {
+        return tasks;
     }
 
 }

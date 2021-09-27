@@ -1,12 +1,15 @@
 package com.gestaltscheduling.GestaltApplication.models;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 import javax.persistence.Entity;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
@@ -15,8 +18,14 @@ public class Task extends AbstractEntity{
 
     @NotBlank
     @NotNull
-    @Size(min = 2, max = 2000, message="Task description must be between 2 and 2000 characters")
+    @Size(min = 2, max = 2000, message="Task description must be between 2 and 4000 characters")
     private String description;
+
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    private Date dateStart;
+
+    @DateTimeFormat(pattern = "MM/dd/yyyy")
+    private Date dateEnd;
 
     @ManyToMany
     private List<Crew> crewList = new ArrayList<>();
@@ -24,23 +33,21 @@ public class Task extends AbstractEntity{
     @ManyToMany
     private List<Rig> rig = new ArrayList<>();
 
-    @ManyToMany
-    private DatesSelected datesSelected;
-
     public Task() { }
 
-    public Task(List<Rig> Rigs, List<Crew> crewList, DatesSelected dateStart) {
+    public Task(List<Rig> rigs, List<Crew> crewList, List<Date> dateStart, List<Date> dateEnd) {
         super();
-        this.rig = Rigs;
+        this.rig = rigs;
         this.crewList = crewList;
-        this.datesSelected = dateStart;
+        this.dateStart = (Date) dateStart;
+        this.dateEnd = (Date) dateEnd;
     }
 
-    public List<Rig> getRig() {
+    public List<Rig> getRigs() {
         return rig;
     }
 
-    public void setRig(List<Rig> rig) {
+    public void setRigs(List<Rig> rig) {
         this.rig = rig;
     }
 
@@ -52,10 +59,45 @@ public class Task extends AbstractEntity{
         this.crewList = crewList;
     }
 
-    public DatesSelected getDates() {
-        return datesSelected;
+    public String getDescription() { return description; }
+
+    public String setDescription(String description) { return this.description = description; }
+
+    public Date getDateStart() {
+        return dateStart;
     }
 
-    public void setDates(DatesSelected datesSelected) { this.datesSelected = datesSelected; }
+    public void setDateStart(Date dateStart) {
+        this.dateStart = dateStart;
+    }
+
+    public Date getDateEnd() {
+        return dateEnd;
+    }
+
+    public void setDateEnd(Date dateEnd) {
+        this.dateEnd = dateEnd;
+    }
+
+    public int setDateToIntegerOfYear(Date dateEntered) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateEntered);
+        int intDate = calendar.get(Calendar.DAY_OF_YEAR);
+        return intDate;
+    }
+
+    public int setDateToIntegerOfMonth(Date dateEntered) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateEntered);
+        int intDate = calendar.get(Calendar.DAY_OF_MONTH);
+        return intDate;
+    }
+
+    public int setDateToIntegerMonth(Date dateEntered) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(dateEntered);
+        int intDate = calendar.get(Calendar.MONTH);
+        return intDate;
+    }
 
 }

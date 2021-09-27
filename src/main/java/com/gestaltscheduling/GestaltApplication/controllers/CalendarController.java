@@ -85,27 +85,27 @@ public class CalendarController {
         for (int y = 0; y < 7; y++){
             int dayToday = todayDay + y;
             week1.put(dayToday, calendarDaysVisible.get(dayToday));
-            week1y.put(dayToday, dayToday);
+            week1y.put(calendarDaysVisible.get(dayToday), dayToday);
         }
         for (int y = 7; y < 14; y++){
             int dayToday = todayDay + y;
             week2.put(dayToday, calendarDaysVisible.get(dayToday));
-            week2y.put(dayToday, dayToday);
+            week2y.put(calendarDaysVisible.get(dayToday), dayToday);
         }
         for (int y = 14; y < 21; y++){
             int dayToday = todayDay + y;
             week3.put(dayToday, calendarDaysVisible.get(dayToday));
-            week3y.put(dayToday, dayToday);
+            week3y.put(calendarDaysVisible.get(dayToday), dayToday);
         }
         for (int y = 21; y < 28; y++){
             int dayToday = todayDay + y;
             week4.put(dayToday, calendarDaysVisible.get(dayToday));
-            week4y.put(dayToday, dayToday);
+            week4y.put(calendarDaysVisible.get(dayToday), dayToday);
         }
         for (int y = 28; y < 35; y++){
             int dayToday = todayDay + y;
             week5.put(dayToday, calendarDaysVisible.get(dayToday));
-            week5y.put(dayToday, dayToday);
+            week5y.put(calendarDaysVisible.get(dayToday), dayToday);
         }
 
         model.addAttribute("week1dates", week1);

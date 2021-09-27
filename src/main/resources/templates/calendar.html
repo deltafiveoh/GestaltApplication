@@ -23,7 +23,9 @@
             <span class="number" th:text ="${date1.value}"></span>
             <span>
                <ul>
-                    <li th:if = "${task.setDateToIntegerOfYear(task.dateStart) <= dayTodayValid and task.setDateToIntegerOfYear(task.dateEnd) >= dayTodayValid}" th:each="task : ${tasks}">
+                    <li th:if = "${task.setDateToIntegerOfYear(task.dateStart) <= date1.key
+                    and task.setDateToIntegerOfYear(task.dateEnd) >= date1.key
+                    and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
                         <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
                     </li>
                 </ul>
@@ -36,9 +38,9 @@
             <span class="number" th:text ="${date2.value}"></span>
             <span>
                <ul>
-                    <li th:if = "${task.setDateToIntegerOfMonth(task.dateStart) <= date2.value
-                    and task.setDateToIntegerOfMonth(task.dateEnd) >= date2.value
-                    and task.setDateToIntegerOfYear(task.dateStart) >= dayTodayValid and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
+                    <li th:if = "${task.setDateToIntegerOfYear(task.dateStart) <= date2.key
+                    and task.setDateToIntegerOfYear(task.dateEnd) >= date2.key
+                    and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
                         <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
                     </li>
                 </ul>
@@ -51,9 +53,9 @@
             <span class="number" th:text ="${date3.value}"></span>
             <span>
                <ul>
-                    <li th:if = "${task.setDateToIntegerOfMonth(task.dateStart) <= date3.value
-                    and task.setDateToIntegerOfMonth(task.dateEnd) >= date3.value
-                    and task.setDateToIntegerOfYear(task.dateStart) >= dayTodayValid and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
+                    <li th:if = "${task.setDateToIntegerOfYear(task.dateStart) <= date3.key
+                    and task.setDateToIntegerOfYear(task.dateEnd) >= date3.key
+                    and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
                         <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
                     </li>
                 </ul>
@@ -66,9 +68,9 @@
             <span class="number" th:text ="${date4.value}"></span>
             <span>
                <ul>
-                    <li th:if = "${task.setDateToIntegerOfMonth(task.dateStart) <= date4.value
-                    and task.setDateToIntegerOfMonth(task.dateEnd) >= date4.value
-                    and task.setDateToIntegerOfYear(task.dateStart) >= dayTodayValid and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
+                    <li th:if = "${task.setDateToIntegerOfYear(task.dateStart) <= date4.key
+                    and task.setDateToIntegerOfYear(task.dateEnd) >= date4.key
+                    and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
                         <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
                     </li>
                 </ul>
@@ -81,9 +83,9 @@
             <span class="number" th:text ="${date5.value}"></span>
             <span>
                <ul>
-                    <li th:if = "${task.setDateToIntegerOfMonth(task.dateStart) <= date5.value
-                    and task.setDateToIntegerOfMonth(task.dateEnd) >= date5.value
-                    and task.setDateToIntegerOfYear(task.dateStart) >= dayTodayValid and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
+                    <li th:if = "${task.setDateToIntegerOfYear(task.dateStart) <= date5.key
+                    and task.setDateToIntegerOfYear(task.dateEnd) >= date5.key
+                    and task.setDateToIntegerMonth(task.dateStart) >= MonthValid}" th:each="task : ${tasks}">
                         <a th:href="@{'/taskFiles/view/' + ${task.id}}" th:text="${task.name}"></a>
                     </li>
                 </ul>
